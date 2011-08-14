@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="Gist.cs" />
     <Compile Include="GistNotFoundException.cs" />
+    <Compile Include="GitHubConnector.cs" />
     <Compile Include="GitHubGists.cs" />
+    <Compile Include="GitHubToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
