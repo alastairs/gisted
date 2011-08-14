@@ -4,6 +4,8 @@ namespace GistEd.GitHub
     {
         private readonly int identity;
 
+        public Gist() {}
+
         public Gist(int identity)
         {
             this.identity = identity;

@@ -5,6 +5,8 @@ namespace GistEd.GitHub
 {
     public class GitHubGists
     {
+        private int newIdentity = 1;
+
         public GitHubGists(string user)
         {
         }
@@ -27,6 +29,11 @@ namespace GistEd.GitHub
             }
 
             return new Gist(gistIdentity);
+        }
+
+        public Gist CreateGist(Gist gist)
+        {
+            return new Gist(newIdentity++);
         }
     }
 }
