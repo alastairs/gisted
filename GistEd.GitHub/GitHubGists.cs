@@ -4,9 +4,11 @@ namespace GistEd.GitHub
 {
     public class GitHubGists
     {
+        private readonly string user;
+
         public GitHubGists(string user)
         {
-            
+            this.user = user;
         }
 
         public IEnumerable<Gist> Get()
@@ -16,7 +18,7 @@ namespace GistEd.GitHub
 
         public Gist Get(int gistIdentity)
         {
-            return new Gist(1);
+            return new Gist(gistIdentity);
         }
     }
 }

@@ -21,9 +21,20 @@ namespace GistEd.GitHub.Tests
         }
 
         [Test]
-        public void ReturnATheSpecifiedGist_WhenTheGistIdentityIsValid_AndTheGistBelongsToTheCurrentUser()
+        public void ReturnTheSpecifiedGist_WhenTheGistIdentityIsValid_AndTheGistBelongsToTheCurrentUser()
         {
             const int gistIdentity = 1;
+            var expectedGist = new Gist(gistIdentity);
+
+            Gist gist = gistApi.Get(gistIdentity);
+
+            Assert.AreEqual(expectedGist.Identity, gist.Identity);
+        }
+
+        [Test]
+        public void ReturnTheSpecifiedGist_WhenTheGistIdentityIsValid_AndTheGistBelongsToAnotherUser_AndTheGistIsPublic()
+        {
+            const int gistIdentity = 2;
             var expectedGist = new Gist(gistIdentity);
 
             Gist gist = gistApi.Get(gistIdentity);
