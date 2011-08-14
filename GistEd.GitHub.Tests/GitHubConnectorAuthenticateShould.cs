@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Moq;
+using NUnit.Framework;
 
 namespace GistEd.GitHub.Tests
 {
@@ -6,12 +7,11 @@ namespace GistEd.GitHub.Tests
     public class GitHubConnectorAuthenticateShould
     {
         [Test]
-        public void ReturnAGitHubToken_WhenAuthenticationIsSuccessful()
+        public void ThrowAGitHubAuthenticationException_WhenThePasswordIsIncorrect()
         {
-            var connector = new GitHubConnector();
-            GitHubToken token = connector.Authenticate("alastairs");
+            var connector = new GitHubConnector(null);
 
-            Assert.IsNotNull(token);
+            Assert.Throws<GitHubAuthenticationException>(() => connector.Authenticate("alastairs", "password"));
         }
     }
 }
