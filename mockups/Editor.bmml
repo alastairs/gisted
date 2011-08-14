@@ -1,0 +1,37 @@
+<mockup version="1.0" skin="sketch" measuredW="1224" measuredH="621" mockupW="800" mockupH="600">
+  <controls>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TitleWindow" x="424" y="21" w="800" h="600" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bottomheight>0</bottomheight>
+        <close>true</close>
+        <maximizeRestore>true</maximizeRestore>
+        <minimize>true</minimize>
+        <text>GistEd</text>
+        <topheight>26</topheight>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::TextArea" x="608" y="42" w="616" h="571" measuredW="200" measuredH="140" zOrder="1" locked="false" isInGroup="-1"/>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::List" x="424" y="42" w="184" h="574" measuredW="100" measuredH="126" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Leap%20Year%20Calculator%20Second%20Attempt%0ALeap%20Year%20Calculator%20First%20Attmpt%0ALeap%20Year%20kata%0A812575%0APowerShell%20one-liner%20to%20extract%20all%20archives%20in%20a%20directory%20%28requires%20the%20PSCX%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="__group__" x="424" y="581" w="184" h="32" measuredW="184" measuredH="32" zOrder="3" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Canvas" x="0" y="0" w="184" h="32" measuredW="100" measuredH="70" zOrder="0" locked="false" isInGroup="12"/>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Button" x="0" y="0" w="31" h="31" measuredW="48" measuredH="31" zOrder="1" locked="false" isInGroup="12">
+          <controlProperties>
+            <icon>PlusIcon%7Csmall</icon>
+            <text/>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::Button" x="31" y="0" w="31" h="31" measuredW="48" measuredH="31" zOrder="2" locked="false" isInGroup="12">
+          <controlProperties>
+            <icon>TrashIcon%7Csmall</icon>
+            <text/>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+  </controls>
+</mockup>
