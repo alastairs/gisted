@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
@@ -40,6 +41,32 @@ namespace GistEd.GitHub.Tests
             Gist gist = gistApi.Get(gistIdentity);
 
             Assert.AreEqual(expectedGist.Identity, gist.Identity);
+        }
+
+        [Test]
+        public void ThrowAnArgumentException_WhenTheGistIdentityIsNegative()
+        {
+            Assert.Throws<ArgumentException>(() => gistApi.Get(-1));
+        }
+
+        [Test]
+        public void ThrowAGistNotFoundException_WhenTheGistIdentityIsZero()
+        {
+            Assert.Throws<GistNotFoundException>(() => gistApi.Get(0));
+        }
+
+        [Test]
+        public void ThrowAGistNotFoundException_WithTheGivenGistIdentity_WhenTheGistIdentityIsZero()
+        {
+            const int gistIdentity = 0;
+            try
+            {
+                gistApi.Get(gistIdentity);
+            }
+            catch (GistNotFoundException ex)
+            {
+                Assert.AreEqual(gistIdentity, ex.Identity);
+            }
         }
     }
 }

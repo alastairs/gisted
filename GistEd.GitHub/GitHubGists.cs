@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GistEd.GitHub
 {
     public class GitHubGists
     {
-        private readonly string user;
-
         public GitHubGists(string user)
         {
-            this.user = user;
         }
 
         public IEnumerable<Gist> Get()
@@ -18,6 +16,16 @@ namespace GistEd.GitHub
 
         public Gist Get(int gistIdentity)
         {
+            if (gistIdentity < 0)
+            {
+                throw new ArgumentException("Parameter must be positive", "gistIdentity");
+            }
+
+            if (gistIdentity == 0)
+            {
+                throw new GistNotFoundException(gistIdentity);
+            }
+
             return new Gist(gistIdentity);
         }
     }
