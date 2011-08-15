@@ -58,6 +58,7 @@
     <Compile Include="GitHubToken.cs" />
     <Compile Include="GitHubUser.cs" />
     <Compile Include="IGitHubClient.cs" />
+    <Compile Include="IGitHubGists.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,11 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="GistEd" Height="600" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Height="25" />
+        <DockPanel>
+            <ListView DockPanel.Dock="Left" Width="200" />
+            <TextBlock />
+        </DockPanel>
+    </DockPanel>
 </Window>

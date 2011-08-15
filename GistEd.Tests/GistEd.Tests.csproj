@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
     </Reference>
@@ -39,6 +42,10 @@
     </Reference>
     <Reference Include="pnunit.framework">
       <HintPath>..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="ReactiveUI">
+      <HintPath>..\packages\reactiveui-core.2.4.0.0\lib\Net4\ReactiveUI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,13 +56,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="GistListViewModelEditGistCommandShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GistEd.GitHub\GistEd.GitHub.csproj">
+      <Project>{A6E37965-2420-49CE-9A19-9BA7534BC491}</Project>
+      <Name>GistEd.GitHub</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GistEd\GistEd.csproj">
       <Project>{E370E84D-9FFF-4DB1-8866-793EBB6B0242}</Project>
       <Name>GistEd</Name>

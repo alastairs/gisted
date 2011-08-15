@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GistEd.GitHub
 {
-    public class GitHubGists
+    public class GitHubGists : IGitHubGists
     {
         private int newIdentity = 1;
 
