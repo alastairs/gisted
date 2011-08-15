@@ -34,6 +34,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.101.3\lib\net4\RestSharp.dll</HintPath>
     </Reference>
@@ -49,9 +52,12 @@
     <Compile Include="Gist.cs" />
     <Compile Include="GistNotFoundException.cs" />
     <Compile Include="GitHubAuthenticationException.cs" />
+    <Compile Include="GitHubClient.cs" />
     <Compile Include="GitHubConnector.cs" />
     <Compile Include="GitHubGists.cs" />
     <Compile Include="GitHubToken.cs" />
+    <Compile Include="GitHubUser.cs" />
+    <Compile Include="IGitHubClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

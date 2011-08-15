@@ -7,5 +7,10 @@ namespace GistEd.GitHub
         public GitHubAuthenticationException(string message) : base(message)
         {
         }
+
+        public GitHubAuthenticationException()
+        {
+            
+        }
     }
 }
