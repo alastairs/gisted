@@ -43,7 +43,7 @@ namespace GistEd.GitHub.Tests
         }
 
         [Test]
-        public void ReturnAGitHubTokenObject_WhenTheCredentialsAreValid()
+        public void ReturnAGitHubUserObject_WhenTheCredentialsAreValid()
         {
             const string username = "username";
             const string password = "password";
