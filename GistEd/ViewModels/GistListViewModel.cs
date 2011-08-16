@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Windows.Input;
 using GistEd.GitHub;
 using ReactiveUI;
@@ -13,7 +12,7 @@ namespace GistEd.ViewModels
         
         public GistListViewModel(IGitHubGists gists)
         {
-            Gists = new ReactiveCollection<Gist>(gists.Get());
+            Gists = new ReactiveCollection<Gist>(gists.GetAllGistsForUser(new GitHubUser()));
 
             ConfigureAddGistCommand();
             ConfigureEditGistCommand();

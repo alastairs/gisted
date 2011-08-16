@@ -58,6 +58,7 @@
     <Compile Include="GitHubClientAuthenticateShould.cs" />
     <Compile Include="GitHubGistCreateShould.cs" />
     <Compile Include="GitHubGistGetShould.cs" />
+    <Compile Include="GitHubGistsGetAllGistsForUserShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

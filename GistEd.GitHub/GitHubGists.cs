@@ -11,7 +11,7 @@ namespace GistEd.GitHub
         {
         }
 
-        public IEnumerable<Gist> Get()
+        public IEnumerable<Gist> GetAllGistsForUser(GitHubUser user)
         {
             yield return new Gist(1);
         }
@@ -31,7 +31,7 @@ namespace GistEd.GitHub
             return new Gist(gistIdentity);
         }
 
-        public Gist CreateGist(Gist gist)
+        public Gist CreateGist(Gist gist, GitHubUser user)
         {
             return new Gist(newIdentity++);
         }

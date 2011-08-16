@@ -14,7 +14,7 @@ namespace GistEd.Tests
         {
             var gist = new Gist();
             var gists = new Mock<IGitHubGists>();
-            gists.Setup(g => g.Get()).Returns(new List<Gist> {gist});
+            gists.Setup(g => g.GetAllGistsForUser(new GitHubUser())).Returns(new List<Gist> {gist});
 
             var gistListViewModel = new GistListViewModel(gists.Object)
                                         {

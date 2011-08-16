@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using NUnit.Framework;
 
 namespace GistEd.GitHub.Tests
@@ -10,16 +8,6 @@ namespace GistEd.GitHub.Tests
     {
         private const string User = "alastairs";
         private readonly GitHubGists gistApi = new GitHubGists(User);
-
-        [Test]
-        public void ReturnAListOfTheUsersGists_WhenTheUsersIdIsValid()
-        {
-            var expectedGist = new Gist(1);
-
-            IEnumerable<Gist> gists = gistApi.Get();
-
-            Assert.AreEqual(expectedGist.Identity, gists.First().Identity);
-        }
 
         [Test]
         public void ReturnTheSpecifiedGist_WhenTheGistIdentityIsValid_AndTheGistBelongsToTheCurrentUser()
@@ -67,6 +55,14 @@ namespace GistEd.GitHub.Tests
             {
                 Assert.AreEqual(gistIdentity, ex.Identity);
             }
+        }
+
+        [Test]
+        public void ThrowAGistNotFoundException_WhenTheGistIdentityIsValid_AndTheGistBelongsToAnotherUser_AndTheGistIsPrivate()
+        {
+            const int gistIdentity = 3;
+
+            Assert.Throws<GistNotFoundException>(() => gistApi.Get(gistIdentity));
         }
     }
 }
