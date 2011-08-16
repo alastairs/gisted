@@ -55,7 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GitHubConnectorAuthenticateShould.cs" />
+    <Compile Include="GitHubClientAuthenticateShould.cs" />
     <Compile Include="GitHubGistCreateShould.cs" />
     <Compile Include="GitHubGistGetShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
