@@ -52,6 +52,7 @@ namespace GistEd.Debugging.RestClient
             var response = restClient.Execute(request);
             
             txtResponse.Text = response.Content;
+            txtResponseStatusCode.Text = string.Format("{0} {1}", (int) response.StatusCode, response.StatusDescription);
         }
 
         private void MainWindow_OnActivated(object sender, EventArgs e)

@@ -5,7 +5,7 @@
         Activated="MainWindow_OnActivated">
     <DockPanel>
         <DockPanel DockPanel.Dock="Top" Margin="5">
-            <Label DockPanel.Dock="Left">Request:</Label>
+            <Label DockPanel.Dock="Left" Width="65">Request:</Label>
             <TextBox x:Name="txtRequest" VerticalContentAlignment="Center">GET /gists</TextBox>
         </DockPanel>
         <DockPanel DockPanel.Dock="Bottom" LastChildFill="False" Margin="5">
@@ -13,8 +13,12 @@
             <Button x:Name="btnIssueRequest" DockPanel.Dock="Right" Margin="5,0,0,0" Width="95" Click="BtnIssueRequestClick" Height="30">Issue Request</Button>
         </DockPanel>
         <DockPanel Margin="5">
-            <Label DockPanel.Dock="Top">Response:</Label>
-            <TextBox x:Name="txtResponse" AcceptsReturn="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+            <DockPanel DockPanel.Dock="Top">
+                <Label DockPanel.Dock="Left" Width="65">Response:</Label>
+                <TextBox x:Name="txtResponseStatusCode" />
+            </DockPanel>
+            <TextBox x:Name="txtResponse" AcceptsReturn="True" Margin="0,5,0,0"
+                     ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" />
         </DockPanel>
     </DockPanel>
 </Window>
