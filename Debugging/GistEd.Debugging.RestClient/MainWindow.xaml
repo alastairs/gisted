@@ -10,7 +10,7 @@
         </DockPanel>
         <DockPanel DockPanel.Dock="Bottom" LastChildFill="False" Margin="5">
             <Button x:Name="btnClose" DockPanel.Dock="Right" Margin="5,0,0,0" Width="95" IsCancel="True" Click="BtnCloseClick" Height="30">Close</Button>
-            <Button x:Name="btnIssueRequest" DockPanel.Dock="Right" Margin="5,0,0,0" Width="95" Click="BtnIssueRequestClick" Height="30">Issue Request</Button>
+            <Button x:Name="btnIssueRequest" DockPanel.Dock="Right" Margin="5,0,0,0" Width="95" Click="BtnIssueRequestClick" Height="30" IsDefault="True">Issue Request</Button>
         </DockPanel>
         <DockPanel Margin="5">
             <DockPanel DockPanel.Dock="Top">
