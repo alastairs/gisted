@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Windows;
+using System.Windows.Media;
 using RestSharp;
 
 namespace GistEd.Debugging.RestClient
@@ -34,21 +35,25 @@ namespace GistEd.Debugging.RestClient
 
             var response = restClient.Execute(request);
 
-            if (!AuthenticationFailed(response.StatusCode))
+            if (AuthenticationFailed(response.StatusCode))
             {
-                DialogResult = true;
-                Token = new GitHubToken(username, password);
-                Close();
+                Color semiTransparentRed = Color.FromArgb(0x50, 0xFF, 0x00, 0x00);
+
+                txtUsername.Background = new SolidColorBrush(semiTransparentRed);
+                txtPassword.Background = new SolidColorBrush(semiTransparentRed);
 
                 return;
             }
 
-            MessageBox.Show("Your username or password was incorrect. Please try again.");
+            DialogResult = true;
+            Token = new GitHubToken(username, password);
+            Close();
         }
 
         private static bool AuthenticationFailed(HttpStatusCode statusCode)
         {
-            return statusCode == HttpStatusCode.Forbidden ||
+            return statusCode == HttpStatusCode.Unauthorized ||
+                   statusCode == HttpStatusCode.Forbidden ||
                    statusCode == HttpStatusCode.BadGateway ||
                    statusCode == HttpStatusCode.BadRequest ||
                    statusCode == HttpStatusCode.InternalServerError ||
