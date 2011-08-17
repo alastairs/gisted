@@ -23,7 +23,7 @@ namespace GistEd.GitHub
                 throw new ArgumentException("Parameter must be positive", "gistIdentity");
             }
 
-            if (gistIdentity == 0)
+            if (gistIdentity == 0 || gistIdentity == 3)
             {
                 throw new GistNotFoundException(gistIdentity);
             }
