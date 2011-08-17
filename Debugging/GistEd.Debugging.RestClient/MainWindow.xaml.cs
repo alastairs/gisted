@@ -1,10 +1,8 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using Ninject;
 using RestSharp;
 using DataFormat = RestSharp.DataFormat;
 
@@ -13,23 +11,20 @@ namespace GistEd.Debugging.RestClient
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class MainWindow : IGitHubRestClientWindow
     {
         private readonly IRestClient restClient;
         private GitHubToken token;
         private bool authenticating;
-        private readonly LoginWindow loginWindow;
+        private readonly ILoginWindowView loginWindowView;
 
-        public MainWindow()
+        [Inject]
+        public MainWindow(IRestClient restClient, ILoginWindowView loginWindowView)
         {
             InitializeComponent();
-            
-            restClient = new RestSharp.RestClient("https://api.github.com/");
 
-            loginWindow = new LoginWindow(restClient)
-                              {
-                                  WindowStartupLocation = WindowStartupLocation.CenterOwner
-                              };
+            this.restClient = restClient;
+            this.loginWindowView = loginWindowView;
         }
 
         private void BtnCloseClick(object sender, RoutedEventArgs e)
@@ -68,14 +63,14 @@ namespace GistEd.Debugging.RestClient
 
             authenticating = true;
 
-            loginWindow.Owner = this;
-            var result = loginWindow.ShowDialog() ?? false;
+            loginWindowView.Owner = this;
+            var result = loginWindowView.ShowDialog() ?? false;
             
             authenticating = false;
 
             if (result)
             {
-                token = loginWindow.Token;
+                token = loginWindowView.Token;
                 return;
             }
             

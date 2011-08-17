@@ -1,66 +1,33 @@
-﻿using System.Net;
-using System.Windows;
-using System.Windows.Media;
-using RestSharp;
+﻿using System.Windows;
+using GistEd.Debugging.RestClient.ViewModels;
+using Ninject;
 
 namespace GistEd.Debugging.RestClient
 {
     /// <summary>
-    /// Interaction logic for LoginWindow.xaml
+    /// Interaction logic for LoginWindowView.xaml
     /// </summary>
-    public partial class LoginWindow
+    public partial class LoginWindowView : ILoginWindowView
     {
-        private readonly IRestClient restClient;
+        public LoginWindowViewModel ViewModel { get; private set; }
 
         public GitHubToken Token { get; private set; }
 
-        public LoginWindow(IRestClient restClient)
+        [Inject]
+        public LoginWindowView(LoginWindowViewModel viewModel)
         {
             InitializeComponent();
-
-            this.restClient = restClient;
+            ViewModel = viewModel;
         }
 
-        private void Login_Click(object sender, RoutedEventArgs e)
+        private void LoginClick(object sender, RoutedEventArgs e)
         {
-            string username = txtUsername.Text;
-            string password = txtPassword.Password;
-
-            restClient.Authenticator = new HttpBasicAuthenticator(username, password);
-            
-            var request = new RestRequest
-                              {
-                                  Resource = string.Format("/user/{0}", username)
-                              };
-
-            var response = restClient.Execute(request);
-
-            if (AuthenticationFailed(response.StatusCode))
-            {
-                Color semiTransparentRed = Color.FromArgb(0x50, 0xFF, 0x00, 0x00);
-
-                txtUsername.Background = new SolidColorBrush(semiTransparentRed);
-                txtPassword.Background = new SolidColorBrush(semiTransparentRed);
-
-                return;
-            }
-
+            Token = ViewModel.Token;
             DialogResult = true;
-            Token = new GitHubToken(username, password);
             Close();
         }
 
-        private static bool AuthenticationFailed(HttpStatusCode statusCode)
-        {
-            return statusCode == HttpStatusCode.Unauthorized ||
-                   statusCode == HttpStatusCode.Forbidden ||
-                   statusCode == HttpStatusCode.BadGateway ||
-                   statusCode == HttpStatusCode.BadRequest ||
-                   statusCode == HttpStatusCode.InternalServerError ||
-                   statusCode == HttpStatusCode.RequestTimeout;
-        }
-
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+        private void CancelClick(object sender, RoutedEventArgs e)
         {
             Token = null;
             DialogResult = false;
