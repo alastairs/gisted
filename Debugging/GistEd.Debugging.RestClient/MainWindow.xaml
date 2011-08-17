@@ -2,7 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="GitHub API Raw Client" Height="350" Width="525"
-        Activated="MainWindow_OnActivated">
+        Activated="MainWindow_OnActivated"
+        FocusManager.FocusedElement="{Binding ElementName=txtRequest}">
     <DockPanel>
         <DockPanel DockPanel.Dock="Top" Margin="5">
             <Label DockPanel.Dock="Left" Width="65">Request:</Label>
@@ -15,9 +16,9 @@
         <DockPanel Margin="5">
             <DockPanel DockPanel.Dock="Top">
                 <Label DockPanel.Dock="Left" Width="65">Response:</Label>
-                <TextBox x:Name="txtResponseStatusCode" />
+                <TextBox x:Name="txtResponseStatusCode" IsReadOnly="True" />
             </DockPanel>
-            <TextBox x:Name="txtResponse" AcceptsReturn="True" Margin="0,5,0,0"
+            <TextBox x:Name="txtResponse" AcceptsReturn="True" Margin="0,5,0,0" IsReadOnly="True"
                      ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" />
         </DockPanel>
     </DockPanel>

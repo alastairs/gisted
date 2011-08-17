@@ -1,6 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 using DataFormat = RestSharp.DataFormat;
 
@@ -51,7 +55,7 @@ namespace GistEd.Debugging.RestClient
 
             var response = restClient.Execute(request);
             
-            txtResponse.Text = response.Content;
+            txtResponse.Text = GetPrettyPrintedJson(response.Content);
             txtResponseStatusCode.Text = string.Format("{0} {1}", (int) response.StatusCode, response.StatusDescription);
         }
 
@@ -76,6 +80,12 @@ namespace GistEd.Debugging.RestClient
             }
             
             Close();
+        }
+
+        public static string GetPrettyPrintedJson(string json)
+        {
+            dynamic parsedJson = JsonConvert.DeserializeObject(json);
+            return JsonConvert.SerializeObject(parsedJson, Formatting.Indented);
         }
     }
 }
