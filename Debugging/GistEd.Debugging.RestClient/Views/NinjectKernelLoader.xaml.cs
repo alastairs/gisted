@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Windows;
 using GistEd.Debugging.RestClient.Interfaces;
 using Ninject;
 
@@ -19,6 +20,7 @@ namespace GistEd.Debugging.RestClient.Views
 
         private void InitializeKernel()
         {
+            // Create a scheduler for the WPF Dispatcher.
             var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
 
             Task.Factory.StartNew(() =>
@@ -33,7 +35,7 @@ namespace GistEd.Debugging.RestClient.Views
                                               {
                                                   Kernel.Get<IScreenFactory>().GetMainWindow().Show();
                                               }
-                                              Close();
+                                              Application.Current.Shutdown();
                                           }, scheduler);
         }
     }

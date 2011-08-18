@@ -35,10 +35,10 @@
             <Label Grid.Column="0" Grid.Row="2">Password:</Label>
             
             <TextBox x:Name="txtUsername" Grid.Column="1" Grid.Row="0" ToolTip="GitHub Username" 
-                     TabIndex="0" VerticalContentAlignment="Center" Text="{Binding Username}" />
+                     TabIndex="0" VerticalContentAlignment="Center" Text="{Binding Username}" Background="{Binding BackgroundBrush}" />
             <PasswordBox x:Name="txtPassword" Grid.Column="1" Grid.Row="2" ToolTip="GitHub Password" 
                          TabIndex="1" VerticalContentAlignment="Center" 
-                         Behaviours:PasswordBoxHelper.BoundPassword="{Binding Password,Mode=TwoWay}" />
+                         Behaviours:PasswordBoxHelper.BoundPassword="{Binding Password,Mode=TwoWay}" Background="{Binding BackgroundBrush}" />
         </Grid>
     </DockPanel>
 </Window>
