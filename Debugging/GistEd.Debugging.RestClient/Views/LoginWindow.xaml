@@ -1,10 +1,10 @@
-﻿<Window x:Class="GistEd.Debugging.RestClient.LoginWindowView"
+﻿<Window x:Class="GistEd.Debugging.RestClient.Views.LoginWindowView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-        Title="Login to GitHub" Height="200" Width="400"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Behaviours="clr-namespace:GistEd.Debugging.RestClient.Behaviours" Title="Login to GitHub" Height="200" Width="400"
         FocusManager.FocusedElement="{Binding ElementName=txtUsername}"
-        DataContext="{Binding ViewModel}"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterOwner"
+        Behaviours:DialogCloser.DialogResult="{Binding DialogResult}">
     <Window.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
             <LinearGradientBrush.GradientStops>
@@ -15,8 +15,10 @@
     </Window.Background>
     <DockPanel KeyboardNavigation.IsTabStop="False">
         <DockPanel DockPanel.Dock="Bottom" LastChildFill="False" Margin="5" KeyboardNavigation.IsTabStop="False" KeyboardNavigation.TabNavigation="Continue">
-            <Button x:Name="Cancel" DockPanel.Dock="Right" Margin="5,0,0,0" Width="95" Height="30" IsCancel="True" Click="CancelClick" TabIndex="3">Cancel</Button>
-            <Button x:Name="Login" DockPanel.Dock="Right" Margin="5,0,0,0"  Width="95" Height="30"  IsDefault="True" Click="LoginClick" TabIndex="2">Login</Button>
+            <Button x:Name="Cancel" DockPanel.Dock="Right" Margin="5,0,0,0" Width="95" Height="30" 
+                    IsCancel="True" Command="{Binding CancelCommand}" TabIndex="3">Cancel</Button>
+            <Button x:Name="Login" DockPanel.Dock="Right" Margin="5,0,0,0"  Width="95" Height="30" 
+                    IsDefault="True" Command="{Binding LoginCommand}" TabIndex="2">Login</Button>
         </DockPanel>
         <Grid Height="55" Margin="5" KeyboardNavigation.IsTabStop="False" KeyboardNavigation.TabNavigation="Continue">
             <Grid.ColumnDefinitions>
@@ -32,8 +34,11 @@
             <Label Grid.Column="0" Grid.Row="0">Username: </Label>
             <Label Grid.Column="0" Grid.Row="2">Password:</Label>
             
-            <TextBox x:Name="txtUsername" Grid.Column="1" Grid.Row="0" ToolTip="GitHub Username" TabIndex="0" VerticalContentAlignment="Center" />
-            <PasswordBox x:Name="txtPassword" Grid.Column="1" Grid.Row="2" ToolTip="GitHub Password" TabIndex="1" VerticalContentAlignment="Center" />
+            <TextBox x:Name="txtUsername" Grid.Column="1" Grid.Row="0" ToolTip="GitHub Username" 
+                     TabIndex="0" VerticalContentAlignment="Center" Text="{Binding Username}" />
+            <PasswordBox x:Name="txtPassword" Grid.Column="1" Grid.Row="2" ToolTip="GitHub Password" 
+                         TabIndex="1" VerticalContentAlignment="Center" 
+                         Behaviours:PasswordBoxHelper.BoundPassword="{Binding Password,Mode=TwoWay}" />
         </Grid>
     </DockPanel>
 </Window>

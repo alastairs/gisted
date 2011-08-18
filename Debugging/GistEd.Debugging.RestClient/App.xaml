@@ -1,7 +1,7 @@
 ﻿<Application x:Class="GistEd.Debugging.RestClient.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="NinjectKernelLoader.xaml">
+             StartupUri="Views\NinjectKernelLoader.xaml">
     <Application.Resources>
          
     </Application.Resources>

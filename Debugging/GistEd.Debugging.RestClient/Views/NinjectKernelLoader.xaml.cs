@@ -1,7 +1,8 @@
 ﻿using System.Threading.Tasks;
+using GistEd.Debugging.RestClient.Interfaces;
 using Ninject;
 
-namespace GistEd.Debugging.RestClient
+namespace GistEd.Debugging.RestClient.Views
 {
     /// <summary>
     /// Interaction logic for NinjectKernelLoader.xaml

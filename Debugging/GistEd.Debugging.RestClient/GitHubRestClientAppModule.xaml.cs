@@ -1,3 +1,5 @@
+using GistEd.Debugging.RestClient.Interfaces;
+using GistEd.Debugging.RestClient.Views;
 using Ninject;
 using Ninject.Modules;
 using RestSharp;

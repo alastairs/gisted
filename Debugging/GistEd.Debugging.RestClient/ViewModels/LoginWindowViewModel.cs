@@ -10,7 +10,8 @@ namespace GistEd.Debugging.RestClient.ViewModels
     public class LoginWindowViewModel : ReactiveObject
     {
         private static readonly Color SemiTransparentRed = Color.FromArgb(0x50, 0xFF, 0x00, 0x00);
-
+        
+        private bool? _DialogResult;
         private string _Password;
         private string _Username;
 
@@ -27,7 +28,14 @@ namespace GistEd.Debugging.RestClient.ViewModels
             CancelCommand.Subscribe(_ =>
                                         {
                                             Token = null;
+                                            DialogResult = false;
                                         });
+        }
+
+        public bool? DialogResult
+        {
+            get { return _DialogResult; }
+            set { this.RaiseAndSetIfChanged(x => x.DialogResult, value); }
         }
 
         public GitHubToken Token { get; private set; }
@@ -72,6 +80,7 @@ namespace GistEd.Debugging.RestClient.ViewModels
 
             BackgroundColor = Colors.Transparent;
             Token = new GitHubToken(Username, Password);
+            DialogResult = true;
         }
 
         private static bool AuthenticationFailed(HttpStatusCode statusCode)

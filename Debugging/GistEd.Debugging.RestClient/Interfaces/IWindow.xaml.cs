@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace GistEd.Debugging.RestClient
+namespace GistEd.Debugging.RestClient.Interfaces
 {
     /// <summary>
     /// Wrapper interface for <see cref="Window"/>.
