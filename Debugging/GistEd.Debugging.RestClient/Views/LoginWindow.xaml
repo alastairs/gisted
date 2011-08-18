@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Behaviours="clr-namespace:GistEd.Debugging.RestClient.Behaviours" Title="Login to GitHub" Height="200" Width="400"
         FocusManager.FocusedElement="{Binding ElementName=txtUsername}"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         Behaviours:DialogCloser.DialogResult="{Binding DialogResult}">
     <Window.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">

@@ -29,7 +29,10 @@ namespace GistEd.Debugging.RestClient.Views
                         .ContinueWith(task =>
                                           {
                                               Hide();
-                                              Kernel.Get<IGitHubRestClientWindow>().Show();
+                                              if (Kernel.Get<IScreenFactory>().GetLoginWindow().ShowDialog() == true)
+                                              {
+                                                  Kernel.Get<IScreenFactory>().GetMainWindow().Show();
+                                              }
                                               Close();
                                           }, scheduler);
         }

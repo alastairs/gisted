@@ -1,9 +1,7 @@
 ﻿<Window x:Class="GistEd.Debugging.RestClient.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Behaviours="clr-namespace:GistEd.Debugging.RestClient.Behaviours" 
         Title="GitHub API Raw Client" Height="350" Width="525"
-        Activated="MainWindow_OnActivated"
         FocusManager.FocusedElement="{Binding ElementName=txtRequest}">
     <DockPanel>
         <DockPanel DockPanel.Dock="Top" Margin="5">

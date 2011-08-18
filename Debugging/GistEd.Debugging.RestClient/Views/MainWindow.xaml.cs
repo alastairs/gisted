@@ -10,38 +10,13 @@ namespace GistEd.Debugging.RestClient.Views
     /// </summary>
     public partial class MainWindow : IGitHubRestClientWindow
     {
-        private bool authenticating;
-        private readonly ILoginWindowView loginWindowView;
-
         [Inject]
-        public MainWindow(MainWindowViewModel viewModel, ILoginWindowView loginWindowView)
+        public MainWindow(MainWindowViewModel viewModel)
         {
             InitializeComponent();
 
             ViewModel = viewModel;
             DataContext = ViewModel;
-
-            this.loginWindowView = loginWindowView;
-        }
-        
-        private void MainWindow_OnActivated(object sender, EventArgs e)
-        {
-            if (authenticating)
-            {
-                return;
-            }
-
-            authenticating = true;
-
-            loginWindowView.Owner = this;
-            var result = loginWindowView.ShowDialog() ?? false;
-            
-            authenticating = false;
-
-            if (!result)
-            {
-                Close();
-            }
         }
 
         #region Implementation of IGitHubRestClientWindow

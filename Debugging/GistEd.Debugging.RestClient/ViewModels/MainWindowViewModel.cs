@@ -10,8 +10,6 @@ namespace GistEd.Debugging.RestClient.ViewModels
 {
     public class MainWindowViewModel : ReactiveObject
     {
-        private bool? _DialogResult;
-
         private string _Request;
         private string _Response;
 
@@ -26,13 +24,6 @@ namespace GistEd.Debugging.RestClient.ViewModels
             IssueRequestCommand.Subscribe(_ => IssueRequest(restClient));
 
             CloseCommand = new ReactiveCommand();
-            CloseCommand.Subscribe(_ => DialogResult = false);
-        }
-
-        public bool? DialogResult
-        {
-            get { return _DialogResult; }
-            set { this.RaiseAndSetIfChanged(x => x.DialogResult, value); }
         }
 
         public string Request
