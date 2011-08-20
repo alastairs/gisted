@@ -56,9 +56,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GitHubClient_Authenticate_Should.cs" />
+    <Compile Include="GitHubClient_GetDataForUser_Should.cs" />
     <Compile Include="GitHubGist_Create_Should.cs" />
     <Compile Include="GitHubGist_Get_Should.cs" />
     <Compile Include="GitHubGists_GetAllGistsForUser_Should.cs" />
+    <Compile Include="GitHubRequestFactory_CreateRequestForType_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
