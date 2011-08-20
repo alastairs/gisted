@@ -155,6 +155,12 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\GistEd.GitHub\GistEd.GitHub.csproj">
+      <Project>{A6E37965-2420-49CE-9A19-9BA7534BC491}</Project>
+      <Name>GistEd.GitHub</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

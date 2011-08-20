@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Security;
 
-namespace GistEd.Debugging.RestClient
+namespace GistEd.GitHub
 {
     public class GitHubToken
     {
@@ -14,5 +14,7 @@ namespace GistEd.Debugging.RestClient
             this.password = new SecureString();
             password.ToList().ForEach(c => this.password.AppendChar(c));
         }
+
+        public string Username { get { return username; } }
     }
 }

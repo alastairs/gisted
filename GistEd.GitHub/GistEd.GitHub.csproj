@@ -57,6 +57,7 @@
     <Compile Include="GitHubAuthenticationException.cs" />
     <Compile Include="GitHubClient.cs" />
     <Compile Include="GitHubGists.cs" />
+    <Compile Include="GitHubToken.cs" />
     <Compile Include="GitHubUser.cs" />
     <Compile Include="IGitHubClient.cs" />
     <Compile Include="IGitHubGists.cs" />
