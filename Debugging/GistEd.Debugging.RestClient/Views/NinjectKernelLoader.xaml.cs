@@ -31,11 +31,11 @@ namespace GistEd.Debugging.RestClient.Views
                         .ContinueWith(task =>
                                           {
                                               Hide();
-                                              if (Kernel.Get<IScreenFactory>().GetLoginWindow().ShowDialog() == true)
+                                              if (Kernel.Get<IScreenFactory>().GetLoginWindow().ShowDialog() == false)
                                               {
-                                                  Kernel.Get<IScreenFactory>().GetMainWindow().Show();
+                                                  Application.Current.Shutdown();
                                               }
-                                              Application.Current.Shutdown();
+                                              Kernel.Get<IScreenFactory>().GetMainWindow().Show();
                                           }, scheduler);
         }
     }

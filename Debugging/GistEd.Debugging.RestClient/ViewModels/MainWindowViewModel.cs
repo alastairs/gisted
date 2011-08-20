@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
+using System.Windows;
 using Newtonsoft.Json;
 using Ninject;
 using ReactiveUI;
 using ReactiveUI.Xaml;
 using RestSharp;
+using DataFormat = RestSharp.DataFormat;
 
 namespace GistEd.Debugging.RestClient.ViewModels
 {
@@ -24,6 +26,7 @@ namespace GistEd.Debugging.RestClient.ViewModels
             IssueRequestCommand.Subscribe(_ => IssueRequest(restClient));
 
             CloseCommand = new ReactiveCommand();
+            CloseCommand.Subscribe(_ => Application.Current.Shutdown());
         }
 
         public string Request
