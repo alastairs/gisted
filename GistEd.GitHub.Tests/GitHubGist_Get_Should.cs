@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace GistEd.GitHub.Tests
 {
     [TestFixture]
-    public class GitHubGistGetShould
+    public class GitHubGist_Get_Should
     {
         private const string User = "alastairs";
         private readonly GitHubGists gistApi = new GitHubGists(User);

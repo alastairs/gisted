@@ -3,7 +3,7 @@
 namespace GistEd.GitHub.Tests
 {
     [TestFixture]
-    public class GitHubGistCreateShould
+    public class GitHubGist_Create_Should
     {
         private GitHubGists gistApi;
 

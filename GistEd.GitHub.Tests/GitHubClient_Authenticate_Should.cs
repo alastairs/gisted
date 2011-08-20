@@ -6,7 +6,7 @@ using RestSharp;
 namespace GistEd.GitHub.Tests
 {
     [TestFixture]
-    public class GitHubClientAuthenticateShould
+    public class GitHubClient_Authenticate_Should
     {
         [Test]
         public void ThrowAGitHubAuthenticationException_WhenThePasswordIsIncorrect()
