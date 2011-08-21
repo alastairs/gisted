@@ -17,6 +17,7 @@ namespace GistEd.Debugging.RestClient.ViewModels
 
         private readonly ObservableAsPropertyHelper<Brush> _BackgroundBrush;
         private bool? _DialogResult;
+        private bool _LoginAnonymously;
 
         private string _Password;
         private GitHubToken _Token;
@@ -26,8 +27,10 @@ namespace GistEd.Debugging.RestClient.ViewModels
         {
             IObservable<bool> canLogin = this.WhenAny(x => x.Username,
                                                       x => x.Password,
-                                                      (u, p) => !string.IsNullOrWhiteSpace(u.Value) &&
-                                                                !string.IsNullOrWhiteSpace(p.Value));
+                                                      x => x.LoginAnonymously,
+                                                      (u, p, anonLogin) => (!string.IsNullOrWhiteSpace(u.Value) && 
+                                                                            !string.IsNullOrWhiteSpace(p.Value)) || 
+                                                                            anonLogin.Value);
 
             LoginCommand = new ReactiveAsyncCommand(canLogin);
             IObservable<bool> loginResults = LoginCommand.RegisterAsyncFunction(x => Authenticate(restClient));
@@ -41,13 +44,6 @@ namespace GistEd.Debugging.RestClient.ViewModels
                                             Token = null;
                                             DialogResult = false;
                                         });
-
-            LoginAnonymouslyCommand = new ReactiveCommand();
-            LoginAnonymouslyCommand.Subscribe(_ =>
-                                                  {
-                                                      Token = null;
-                                                      DialogResult = true;
-                                                  });
         }
 
         #region Data-Bound Properties
@@ -62,6 +58,12 @@ namespace GistEd.Debugging.RestClient.ViewModels
         {
             get { return _Token; }
             set { this.RaiseAndSetIfChanged(x => x.Token, value); }
+        }
+
+        public bool LoginAnonymously
+        {
+            get { return _LoginAnonymously; }
+            set { this.RaiseAndSetIfChanged(x => x.LoginAnonymously, value); }
         }
 
         public string Password
@@ -97,12 +99,17 @@ namespace GistEd.Debugging.RestClient.ViewModels
 
         public IReactiveCommand CancelCommand { get; private set; }
 
-        public IReactiveCommand LoginAnonymouslyCommand { get; private set; }
-
         public ReactiveAsyncCommand LoginCommand { get; private set; }
 
         private bool Authenticate(IRestClient restClient)
         {
+            if (LoginAnonymously)
+            {
+                Token = null;
+                DialogResult = true;
+                return true;
+            }
+
             restClient.Authenticator = new HttpBasicAuthenticator(Username, Password);
             var request = new RestRequest
                               {

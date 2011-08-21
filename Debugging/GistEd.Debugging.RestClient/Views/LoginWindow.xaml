@@ -1,7 +1,9 @@
 ﻿<Window x:Class="GistEd.Debugging.RestClient.Views.LoginWindowView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Behaviours="clr-namespace:GistEd.Debugging.RestClient.Behaviours" Title="Login to GitHub" Height="200" Width="400"
+        xmlns:Behaviours="clr-namespace:GistEd.Debugging.RestClient.Behaviours" 
+        xmlns:ValueConverters="clr-namespace:GistEd.Debugging.RestClient.ValueConverters"
+        Title="Login to GitHub" Height="200" Width="400"
         FocusManager.FocusedElement="{Binding ElementName=txtUsername}"
         WindowStartupLocation="CenterScreen"
         Behaviours:DialogCloser.DialogResult="{Binding DialogResult}">
@@ -33,18 +35,21 @@
                 <RowDefinition Height="5" />
                 <RowDefinition />
             </Grid.RowDefinitions>
+            <Grid.Resources>
+                <ValueConverters:InverseBooleanConverter x:Key="InverseBooleanValueConverter" />
+            </Grid.Resources>
 
             <Label Grid.Column="0" Grid.Row="0">Username:</Label>
             <Label Grid.Column="0" Grid.Row="2">Password:</Label>
 
             <TextBox x:Name="txtUsername" Grid.Column="1" Grid.Row="0" ToolTip="GitHub Username" 
-                     TabIndex="0" VerticalContentAlignment="Center" Text="{Binding Username}" Background="{Binding BackgroundBrush}" />
+                     TabIndex="0" VerticalContentAlignment="Center" Text="{Binding Username}" Background="{Binding BackgroundBrush}"
+                     IsEnabled="{Binding LoginAnonymously, Converter={StaticResource InverseBooleanValueConverter}}" />
             <PasswordBox x:Name="txtPassword" Grid.Column="1" Grid.Row="2" ToolTip="GitHub Password" 
                          TabIndex="1" VerticalContentAlignment="Center" 
-                         Behaviours:PasswordBoxHelper.BoundPassword="{Binding Password,Mode=TwoWay}" Background="{Binding BackgroundBrush}" />
-            <TextBlock Grid.Column="1" Grid.Row="4" TextAlignment="Right" VerticalAlignment="Center">
-                <Hyperlink Command="{Binding LoginAnonymouslyCommand}">Login Anonymously</Hyperlink>
-            </TextBlock>
+                         Behaviours:PasswordBoxHelper.BoundPassword="{Binding Password,Mode=TwoWay}" Background="{Binding BackgroundBrush}"
+                         IsEnabled="{Binding LoginAnonymously, Converter={StaticResource InverseBooleanValueConverter}}" />
+            <CheckBox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center" Content="Login Anonymously?" IsChecked="{Binding LoginAnonymously}" />            
         </Grid>
     </DockPanel>
 </Window>

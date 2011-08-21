@@ -96,6 +96,7 @@
     <Compile Include="Interfaces\IWindow.xaml.cs" />
     <Compile Include="Interfaces\IScreenFactory.cs" />
     <Compile Include="ScreenFactory.cs" />
+    <Compile Include="ValueConverters\InverseBooleanConverter.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\NinjectKernelLoader.xaml.cs">
       <DependentUpon>NinjectKernelLoader.xaml</DependentUpon>
