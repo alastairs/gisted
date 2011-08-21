@@ -2,8 +2,8 @@
 using System.Net;
 using System.Reactive.Linq;
 using System.Threading;
-using System.Windows.Input;
 using System.Windows.Media;
+using GistEd.GitHub;
 using ReactiveUI;
 using ReactiveUI.Xaml;
 using RestSharp;
