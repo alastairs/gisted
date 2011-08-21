@@ -14,13 +14,14 @@
         </LinearGradientBrush>
     </Window.Background>
     <DockPanel KeyboardNavigation.IsTabStop="False">
-        <DockPanel DockPanel.Dock="Bottom" LastChildFill="False" Margin="5" KeyboardNavigation.IsTabStop="False" KeyboardNavigation.TabNavigation="Continue">
-            <Button x:Name="Cancel" DockPanel.Dock="Right" Margin="5,0,0,0" Width="95" Height="30" 
-                    IsCancel="True" Command="{Binding CancelCommand}" TabIndex="3">Cancel</Button>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5" 
+                    KeyboardNavigation.IsTabStop="False" KeyboardNavigation.TabNavigation="Continue">
             <Button x:Name="Login" DockPanel.Dock="Right" Margin="5,0,0,0"  Width="95" Height="30" 
                     IsDefault="True" Command="{Binding LoginCommand}" TabIndex="2">Login</Button>
-        </DockPanel>
-        <Grid Height="55" Margin="5" KeyboardNavigation.IsTabStop="False" KeyboardNavigation.TabNavigation="Continue">
+            <Button x:Name="Cancel" DockPanel.Dock="Right" Margin="5,0,0,0" Width="95" Height="30" 
+                    IsCancel="True" Command="{Binding CancelCommand}" TabIndex="3">Cancel</Button>
+        </StackPanel>
+        <Grid Height="80" Margin="5,25,5,5" KeyboardNavigation.IsTabStop="False" KeyboardNavigation.TabNavigation="Continue">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100" />
                 <ColumnDefinition></ColumnDefinition>
@@ -29,16 +30,21 @@
                 <RowDefinition />
                 <RowDefinition Height="5" />
                 <RowDefinition />
+                <RowDefinition Height="5" />
+                <RowDefinition />
             </Grid.RowDefinitions>
-            
-            <Label Grid.Column="0" Grid.Row="0">Username: </Label>
+
+            <Label Grid.Column="0" Grid.Row="0">Username:</Label>
             <Label Grid.Column="0" Grid.Row="2">Password:</Label>
-            
+
             <TextBox x:Name="txtUsername" Grid.Column="1" Grid.Row="0" ToolTip="GitHub Username" 
                      TabIndex="0" VerticalContentAlignment="Center" Text="{Binding Username}" Background="{Binding BackgroundBrush}" />
             <PasswordBox x:Name="txtPassword" Grid.Column="1" Grid.Row="2" ToolTip="GitHub Password" 
                          TabIndex="1" VerticalContentAlignment="Center" 
                          Behaviours:PasswordBoxHelper.BoundPassword="{Binding Password,Mode=TwoWay}" Background="{Binding BackgroundBrush}" />
+            <TextBlock Grid.Column="1" Grid.Row="4" TextAlignment="Right" VerticalAlignment="Center">
+                <Hyperlink Command="{Binding LoginAnonymouslyCommand}">Login Anonymously</Hyperlink>
+            </TextBlock>
         </Grid>
     </DockPanel>
 </Window>

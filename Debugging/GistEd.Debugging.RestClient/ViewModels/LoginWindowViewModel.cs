@@ -32,7 +32,7 @@ namespace GistEd.Debugging.RestClient.ViewModels
             LoginCommand = new ReactiveAsyncCommand(canLogin);
             IObservable<bool> loginResults = LoginCommand.RegisterAsyncFunction(x => Authenticate(restClient));
             
-            IObservable<Brush> backgroundColourSelector = loginResults.Select(loginSucceeded => loginSucceeded ? TransparentBrush : SemiTransparentRedBrush);
+            IObservable<Brush> backgroundColourSelector = loginResults.ObserveOn(System.Reactive.Concurrency.Scheduler.TaskPool).Select(loginSucceeded => loginSucceeded ? TransparentBrush : SemiTransparentRedBrush);
             _BackgroundBrush = this.ObservableToProperty(backgroundColourSelector, x => x.BackgroundBrush);
 
             CancelCommand = new ReactiveCommand();
@@ -41,6 +41,13 @@ namespace GistEd.Debugging.RestClient.ViewModels
                                             Token = null;
                                             DialogResult = false;
                                         });
+
+            LoginAnonymouslyCommand = new ReactiveCommand();
+            LoginAnonymouslyCommand.Subscribe(_ =>
+                                                  {
+                                                      Token = null;
+                                                      DialogResult = true;
+                                                  });
         }
 
         #region Data-Bound Properties
@@ -89,6 +96,8 @@ namespace GistEd.Debugging.RestClient.ViewModels
         #region Commands
 
         public IReactiveCommand CancelCommand { get; private set; }
+
+        public IReactiveCommand LoginAnonymouslyCommand { get; private set; }
 
         public ReactiveAsyncCommand LoginCommand { get; private set; }
 
